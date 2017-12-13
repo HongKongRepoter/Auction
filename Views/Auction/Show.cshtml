@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "New Auction"; 
+    Layout = "_Layout"; 
+    var auction = ViewBag.Auction;
+}
+<h2>@auction.Name</h2>
+<div class="container">
+    <div class="form-group">
+        <label>Created By:</label> @auction.Seller.FirstName @auction.Seller.LastName
+    </div>
+    <div class="form-group">
+        @{
+             TimeSpan Remain = auction.EndDate-DateTime.Now;
+        }
+        <label>Time Remaining:</label> @Remain.Days days
+    </div>
+    <div class="form-group">
+        <p>@auction.Description</p>
+    </div>
+    <div class="form-group">
+        @{
+            float TopBid = auction.StartBid;
+            int index = 0;
+            if(auction.Bids.Count>0)
+            {
+                TopBid = auction.Bids[0].Amount;
+                for(int i=1; i<auction.Bids.Count; i++)
+                {   
+                    if(TopBid<auction.Bids[i].Amount)
+                    {
+                        index = i; 
+                        TopBid=auction.Bids[i].Amount;
+                    }
+                }
+                <h2>Higest Bidder: @auction.Bids[index].Bidder.Username</h2>
+            } 
+        }
+        <div>
+            <h3 style="display:inline-block;">Current Highest Bid:</h3>
+            <h2 style="display:inline-block;">$@TopBid</h2>
+        </div>
+    </div>
+    <div class="container">
+         @model Auctions.Models.BidViewModel
+         <h4>Place your bid:</h4>
+        <form action="/Auction/NewBid/@auction.AuctionId" method="POST">
+            <span class="err" asp-validation-for="Bid"></span>
+            @if(ViewBag.TooLow!=null)
+            {
+                <span class="err">@ViewBag.TooLow</span>
+            }
+            <input class="form-control" asp-for="Bid" placeholder="Your bid goes here">
+            <button type="submit" class="btn btn-primary">Bid</button>
+        </form>
+    </div>
+</div>

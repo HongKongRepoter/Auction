@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "New Auction"; 
+    Layout = "_Layout"; 
+}
+<h2>New Auction</h2>
+    <div class="container">
+         @model Auctions.Models.AuctionViewModel
+        <form asp-controller="Auction" asp-action="Create" method="POST">
+            <div class="form-group">
+                <label asp-for="Name">Name:</label>
+                <span class="err" asp-validation-for="Name"></span>
+                <input class="form-control" asp-for="Name">
+            </div>
+            <div class="form-group">
+                <label asp-for="Description">Description:</label>
+                <span class="err" asp-validation-for="Description"></span>
+                <input class="form-control" asp-for="Description">
+            </div>
+            <div class="form-group">
+                <label asp-for="Bid">Starting Bid:</label>
+                <span class="err" asp-validation-for="Bid"></span>
+                <input class="form-control" asp-for="Bid">
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate">End Date:</label>
+                <span class="err" asp-validation-for="EndDate"></span>
+                <input type="Date" class="form-control" asp-for="EndDate">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>

@@ -1,0 +1,9 @@
+/Users/mikeno/Desktop/Sharp_Exam/Auction/bin/Debug/netcoreapp1.1/Auction.deps.json
+/Users/mikeno/Desktop/Sharp_Exam/Auction/bin/Debug/netcoreapp1.1/Auction.runtimeconfig.json
+/Users/mikeno/Desktop/Sharp_Exam/Auction/bin/Debug/netcoreapp1.1/Auction.runtimeconfig.dev.json
+/Users/mikeno/Desktop/Sharp_Exam/Auction/bin/Debug/netcoreapp1.1/Auction.dll
+/Users/mikeno/Desktop/Sharp_Exam/Auction/bin/Debug/netcoreapp1.1/Auction.pdb
+/Users/mikeno/Desktop/Sharp_Exam/Auction/obj/Debug/netcoreapp1.1/Auction.csproj.CoreCompileInputs.cache
+/Users/mikeno/Desktop/Sharp_Exam/Auction/obj/Debug/netcoreapp1.1/Auction.AssemblyInfo.cs
+/Users/mikeno/Desktop/Sharp_Exam/Auction/obj/Debug/netcoreapp1.1/Auction.dll
+/Users/mikeno/Desktop/Sharp_Exam/Auction/obj/Debug/netcoreapp1.1/Auction.pdb

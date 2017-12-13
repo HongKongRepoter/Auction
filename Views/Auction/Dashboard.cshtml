@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Dashboard"; 
+    Layout = "_Layout"; 
+    var logged = ViewBag.LoggedUser;
+}
+<h1>Welcome, @logged.FirstName!</h1>
+<div class="container">
+    <label>Your Current Wallent:</label> $@logged.Wallet
+</div>
+<h2>Current Auctions</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Seller</th>
+            <th>Top Bid</th>
+            <th>Time Remaining</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var auction in ViewBag.Auctions)
+        {
+            TimeSpan Remain = auction.EndDate-DateTime.Now;
+            <tr>
+                <td><a href="/Auction/Show/@auction.AuctionId">@auction.Name</a></td>
+                <td>@auction.Seller.Username</td>
+                <td>@auction.StartBid</td>
+                <td>@Remain.Days days</td>
+                <td>
+                    @{
+                        if(auction.SellerId==logged.UserId) {
+                            <form action="/Auction/Delete/@auction.AuctionId" method="POST">
+                                <button class="btn btn-link">Delete</button>
+                            </form>
+                        }
+                        else 
+                        {
+                            <form action="/Auction/Show/@auction.AuctionId">
+                                <button class="btn btn-link">Check Auction</button>
+                            </form>
+                        }
+                    }
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form action="Auction/New" method="GET">
+    <button class="btn btn-info">New Auction</button>
+</form>
